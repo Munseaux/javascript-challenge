@@ -5,16 +5,42 @@ var tableData = data;
 
 var tbody = d3.select("tbody");
 
-data.forEach(function(tableData) {
-    console.log(tableData);
+  tableData.forEach((tableData) => {
     var row = tbody.append("tr");
+    Object.entries(tableData).forEach(([key, value]) => {
+      var cell = row.append("td");
+      cell.text(value);
+    });
+  });
 
-    Object.entries(tableData).forEach(function([key, value]) {
-            console.log(key, value);
-            // Append a cell to the row for each value
-            // in the weather report object
-            var cell = row.append("td");
+  var button = d3.select("#filter-btn");
+
+  var form = d3.select("#datetime");
+
+  button.on("click", runEnter);
+  button.on("submit", runEnter);
+
+  function runEnter() {
+
+    d3.event.preventDefault();
+
+    var inputElement = d3.select("#datetime");
+
+    var inputValue = inputElement.property("value");
+
+    var filteredData = tableData.filter(row => row.datetime === inputValue);
+    console.log(filteredData);
+
+    tbody.html("");
+
+    filteredData.forEach((filteredData) => {
+        var row = tbody.append("tr");
+        console.log(filteredData);
+        Object.entries(filteredData).forEach(([key, value]) => {
+            var cell = row.append("td");            
             cell.text(value);
+        });
     });
 
-  });
+
+  }
