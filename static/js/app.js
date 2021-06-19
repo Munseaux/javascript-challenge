@@ -5,22 +5,22 @@ var tableData = data;
 
 var tbody = d3.select("tbody");
 
-  tableData.forEach((tableData) => {
+tableData.forEach((tableData) => {
     var row = tbody.append("tr");
     Object.entries(tableData).forEach(([key, value]) => {
-      var cell = row.append("td");
-      cell.text(value);
+        var cell = row.append("td");
+        cell.text(value);
     });
-  });
+});
 
-  var button = d3.select("#filter-btn");
+var button = d3.select("#filter-btn");
 
-  var form = d3.select("#datetime");
+var form = d3.select("#form");
 
-  button.on("click", runEnter);
-  button.on("submit", runEnter);
+button.on("click", runEnter);
+form.on("submit", runEnter);
 
-  function runEnter() {
+function runEnter() {
 
     d3.event.preventDefault();
 
@@ -41,6 +41,4 @@ var tbody = d3.select("tbody");
             cell.text(value);
         });
     });
-
-
-  }
+}
