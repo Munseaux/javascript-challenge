@@ -60,6 +60,16 @@
   .filters .panel-body {
     padding: 0;
   }
+
+  #filter-btn {
+    margin: auto;
+    text-align: center;
+    background-color:cadetblue;
+    border-style: solid;
+    border-width: 2%;
+    border-color: black;
+    
+  }
   
   .filters {
     margin-top: 10px;
